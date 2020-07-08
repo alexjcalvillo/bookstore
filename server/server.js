@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const PORT = 5000;
-const pool = require('./public/modules/pool');
+const booksRouter = require('./public/routers/books.routers');
+// const pool = require('./public/modules/pool');
 
 const app = express();
 
@@ -23,20 +24,8 @@ app.use(express.static('./server/public'));
 
 //
 // APP ROUTES
-// -----------------
-app.get('/api/books', (req, res) => {
-  const queryText = `SELECT * FROM "books" ORDER BY "title" ASC;`;
-
-  pool
-    .query(queryText)
-    .then((dbResponse) => {
-      res.send(dbResponse.rows);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.sendStatus(500);
-    });
-});
+// ----------
+app.use('/api/books', booksRouter);
 
 app.post('/api/books', (req, res) => {
   const book = req.body;
@@ -55,7 +44,7 @@ app.post('/api/books', (req, res) => {
 
 //
 // APP SERVER ON
-// -----------------
+// -------------
 app.listen(PORT, () => {
   console.log(`Listening on PORT: `, PORT);
 });

@@ -13,7 +13,7 @@ function init() {
 
 //
 // AJAX REQUESTS (GET, POST, DELETE, PUT)
-// ----------------
+// --------------------------------------
 function getBooksData() {
   $.ajax({
     type: 'GET',
@@ -52,7 +52,7 @@ function postNewBook() {
 }
 //
 // CLIENT/DOM CHANGES
-// ----------------
+// -------------------
 function renderBooks(books) {
   const booksList = books;
   console.log('rendering data');
