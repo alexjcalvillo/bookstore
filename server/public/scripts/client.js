@@ -25,6 +25,7 @@ function getBooksData() {
     .then((response) => {
       console.log('GET - response', response);
       renderBooks(response);
+      inputReset();
     })
     .catch((err) => {
       console.log(err);
@@ -34,6 +35,23 @@ function getBooksData() {
 
 function postNewBook() {
   console.log('POST ing -');
+
+  $.ajax({
+    type: 'POST',
+    url: '/api/books',
+    data: {
+      title: $('#js-title').val(),
+      author: $('#js-author').val(),
+      published: $('#js-published').val(),
+    },
+  })
+    .then((response) => {
+      console.log(response);
+      getBooksData();
+    })
+    .catch((err) => {
+      console.log('Oh no, something is wrong', err);
+    });
 }
 //
 // CLIENT/DOM CHANGES
@@ -50,4 +68,10 @@ function renderBooks(books) {
         <td>${moment(book.published).format('MM-DD-YYYY')}</td>
       </tr>`);
   }
+}
+
+function inputReset() {
+  $('#js-title').val('');
+  $('#js-author').val('');
+  $('#js-published').val('');
 }

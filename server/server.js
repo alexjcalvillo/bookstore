@@ -40,8 +40,17 @@ app.get('/api/books', (req, res) => {
 
 app.post('/api/books', (req, res) => {
   const book = req.body;
+  const queryText = `INSERT INTO "books" ("title", "author", "published")
+  VALUES ($1, $2, $3);`;
   console.log(book);
-  res.send(201);
+  pool
+    .query(queryText, [book.title, book.author, book.published])
+    .then((dbResponse) => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log('Yikes it did not work', err);
+    });
 });
 
 //
