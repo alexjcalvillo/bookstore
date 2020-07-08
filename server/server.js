@@ -27,20 +27,7 @@ app.use(express.static('./server/public'));
 // ----------
 app.use('/api/books', booksRouter);
 
-app.post('/api/books', (req, res) => {
-  const book = req.body;
-  const queryText = `INSERT INTO "books" ("title", "author", "published")
-  VALUES ($1, $2, $3);`;
-  console.log(book);
-  pool
-    .query(queryText, [book.title, book.author, book.published])
-    .then((dbResponse) => {
-      res.sendStatus(201);
-    })
-    .catch((err) => {
-      console.log('Yikes it did not work', err);
-    });
-});
+app.post('/api/books', booksRouter);
 
 //
 // APP SERVER ON
