@@ -5,7 +5,7 @@ $(document).ready(init);
 function init() {
   console.log('JQ is loaded');
   // TO DO events
-
+  $('.js-btn-submit').on('click', postNewBook);
   // TO DO: on load - get books from database (ideally render them too)
   getBooksData();
 }
@@ -15,7 +15,7 @@ function init() {
 // ----------------
 
 //
-// AJAX REQUESTS
+// AJAX REQUESTS (GET, POST, DELETE, PUT)
 // ----------------
 function getBooksData() {
   $.ajax({
@@ -32,6 +32,9 @@ function getBooksData() {
     });
 }
 
+function postNewBook() {
+  console.log('POST ing -');
+}
 //
 // CLIENT/DOM CHANGES
 // ----------------

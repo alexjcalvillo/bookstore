@@ -38,10 +38,11 @@ app.get('/api/books', (req, res) => {
     });
 });
 
-// app.post('/api/books', (req, res) => {
-
-//   res.send(201);
-// })
+app.post('/api/books', (req, res) => {
+  const book = req.body;
+  console.log(book);
+  res.send(201);
+});
 
 //
 // APP SERVER ON
