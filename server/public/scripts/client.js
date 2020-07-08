@@ -35,6 +35,17 @@ function getBooksData() {
 //
 // CLIENT/DOM CHANGES
 // ----------------
-function render(response) {
+function renderBooks(books) {
+  // const booksList = books;
+  const book = books;
   console.log('rendering data');
+  $('.js-books').empty();
+  // for (let book of booksList) {
+  $('.js-books').append(`
+    <tr>
+    <td>${book.title}</td>
+    <td>${book.author}</td>
+    <td>${book.published}</td>
+    </tr>`);
+  // }
 }
