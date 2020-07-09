@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const PORT = 5000;
 const booksRouter = require('./public/routers/books.routers');
-// const pool = require('./public/modules/pool');
+const magazinesRouter = require('./public/routers/magazines.routers');
 
 const app = express();
 
@@ -27,11 +27,10 @@ app.use(express.static('./server/public'));
 // ----------
 app.use('/api/books', booksRouter);
 
-app.post('/api/books', booksRouter);
 //
 // CURRENTLY WORKING ON
 //  magazines router for DB on zines
-
+app.use('/api/magazines', magazinesRouter);
 //
 // APP SERVER ON
 // -------------

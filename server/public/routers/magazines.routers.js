@@ -30,3 +30,5 @@ router.post('/', (req, res) => {
       console.log('Yikes it did not work', err);
     });
 });
+
+module.exports = router;
