@@ -28,6 +28,9 @@ app.use(express.static('./server/public'));
 app.use('/api/books', booksRouter);
 
 app.post('/api/books', booksRouter);
+//
+// CURRENTLY WORKING ON
+//  magazines router for DB on zines
 
 //
 // APP SERVER ON
